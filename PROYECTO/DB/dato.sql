@@ -1,3 +1,6 @@
+INSERT INTO `tipos_documentos` (`id_tdocumento`, `tipo_documento`) VALUES ('1', 'DNI');
+INSERT INTO `tipos_documentos` (`id_tdocumento`, `tipo_documento`) VALUES ('2', 'Carnet de Extranjeria');
+
 INSERT INTO grados VALUES (null, 'Primer Grado'), (null, 'Segundo Grado');
 INSERT INTO secciones VALUES (null, 'A'), (null, 'B'), (null, 'C');
 
