@@ -1,5 +1,5 @@
 <?php
-require_once 'docentes.php';
+require_once 'docente.php';
 require_once 'grado.php';
 require_once 'seccion.php';
 
@@ -25,6 +25,7 @@ class Aula
 	{
 		return $this->$x;
 	}
+	
 	public function __SET($x, $y)
 	{
 		return $this->$x = $y;
