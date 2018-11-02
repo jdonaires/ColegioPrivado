@@ -8,10 +8,10 @@ class Arcalificacion_nota
 	private $id_arcalificacion;
 	private $id_nota;
 
-	ublic function _CONSTRUCT(){
+	public function _CONSTRUCT(){
 		$this-> id_arcalificacion = new Alumno_rcalificacion();
 		$this-> id_nota = new Nota();
-	
+	}
 	public function __GET($x)
 	{ 
 		return $this->$x; 
