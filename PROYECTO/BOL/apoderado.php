@@ -10,7 +10,8 @@ class Apoderado
 	private $correo;
 	private $id_ninstruccion;
 
-	public function __construct(){
+	public function __construct()
+	{
 		$this->id_persona = new Persona();
 		$this->id_ninstruccion = new Nivel_instruccion();
 	}
@@ -19,6 +20,7 @@ class Apoderado
 	{
 		return $this->$x;
 	}
+
 	public function __SET($x, $y)
 	{
 		return $this->$x = $y;
