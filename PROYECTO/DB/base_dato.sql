@@ -111,7 +111,7 @@ CREATE TABLE alumnos_rcalificaciones
 
 CREATE TABLE arcalificaciones_notas
 (
-  id_arcnotas INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  id_arcnota INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   id_arcalificacion INT(11) NOT NULL,
   id_nota INT(11) NOT NULL,
   CONSTRAINT fk_arcalificaciones_notas_notas FOREIGN KEY (id_nota) REFERENCES notas(id_nota),

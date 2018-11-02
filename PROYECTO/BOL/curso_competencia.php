@@ -8,7 +8,8 @@ class Curso_competencia
 	private $id_curso;
 	private $id_competencia;
 
-	public function _CONSTRUCT(){
+	public function _CONSTRUCT()
+	{
 		$this->id_curso = new Curso();
 		$this->id_competencia = new Competencia();
 	}
@@ -17,6 +18,7 @@ class Curso_competencia
 	{
 		return $this->$x;
 	}
+
 	public function __SET($x, $y)
 	{
 		return $this->$x = $y;

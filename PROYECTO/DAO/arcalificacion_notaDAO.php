@@ -1,6 +1,6 @@
 <?php
-require_once('../DAL/DBAccess.php');
-require_once('../BOL/arcalificacion_nota.php');
+require_once '../DAL/DBAccess.php';
+require_once '../BOL/arcalificacion_nota.php';
 
 class Arcalificacion_notaDAO
 {
@@ -16,51 +16,43 @@ class Arcalificacion_notaDAO
 	{
 		try
 		{
-		$statement = $this->pdo->prepare("CALL up_insertar_arcalificacion_nota(?,?,?)");
-    $statement->bindParam(1,$arcalificacion_nota->__GET('id_arcnotas'));
-		$statement->bindParam(2,$arcalificacion_nota->__GET('id_arcalificacion'));
-		$statement->bindParam(3,$arcalificacion_nota->__GET('id_nota'));
-    $statement -> execute();
-
+			$statement = $this->pdo->prepare("CALL up_registrar_arcalificacion_nota(?,?,?)");
+	    $statement->bindParam(1, $arcalificacion_nota->__GET('id_arcnota'));
+			$statement->bindParam(2, $arcalificacion_nota->__GET('id_arcalificacion'));
+			$statement->bindParam(3, $arcalificacion_nota->__GET('id_nota'));
+	    $statement -> execute();
 		} catch (Exception $e)
 		{
 			die($e->getMessage());
 		}
 	}
 
-	public function Listar(Arcalificacion_nota $arcalificacion_nota)
+	public function Buscar(Arcalificacion_nota $arcalificacion_nota)
 	{
 		try
 		{
 			$result = array();
-
-			$statement = $this->pdo->prepare("call up_buscar_arcalificacion_nota(?,
-				?,?)");
+			$statement = $this->pdo->prepare("CALL up_buscar_arcalificacion_nota(?,?,?)");
 			$statement->bindParam(1,$arcalificacion_nota->__GET('id_arcnotas'));
 			$statement->bindParam(2,$arcalificacion_nota->__GET('id_arcalificacion'))
 			$statement->bindParam(2,$arcalificacion_nota->__GET('id_nota'))
-
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
-				$not = new Arcalificacion_nota();
+				$arcalificacion_nota = new Arcalificacion_nota();
+				$arcalificacion_nota->__SET('id_arcnota', $r->id_arcnota);
+				$arcalificacion_nota->__SET('id_arcalificacion', $r->id_arcalificacion);
+				$arcalificacion_nota->__SET('id_nota', $r->id_nota);
 
-				$not->__SET('id_arcnotas', $r->id_arcnotas);
-				$not->__SET('id_arcalificacion', $r->id_arcalificacion);
-				$not->__SET('id_nota', $r->id_nota);
-			
-
-				$result[] = $not;
+				$result[] = $arcalificacion_nota;
 			}
 
 			return $result;
-		}
-		catch(Exception $e)
+		} catch(Exception $e)
 		{
 			die($e->getMessage());
 		}
 	}
 }
-
 ?>

@@ -1,5 +1,5 @@
 <?php
-require_once('../DAL/DBAccess.php');
+require_once '../DAL/DBAccess.php';
 
 class PeriodoDAO
 {
@@ -8,7 +8,6 @@ class PeriodoDAO
   public function __CONSTRUCT()
   {
     $dba = new DBAccess();
-
     $this->pdo = $dba->get_connection();
   }
 
@@ -17,11 +16,10 @@ class PeriodoDAO
   {
     try
     {
-
-    $statement = $this->pdo->prepare("CALL up_insertar_periodo(?,?)");
-    $statement->bindParam(1,$periodos->__GET('id_periodo'));
-    $statement->bindParam(2,$periodos->__GET('descripcion'));
-    $statement -> execute();
+      $statement = $this->pdo->prepare("CALL up_registrar_periodo(?,?)");
+      $statement->bindParam(1, $periodo->__GET('id_periodo'));
+      $statement->bindParam(2, $periodo->__GET('periodo'));
+      $statement -> execute();
   }  catch (Exception $e)
   {
     die($e->getMessage());
@@ -29,30 +27,29 @@ class PeriodoDAO
 }
 
 /*Listar Periodo*/
- public function ListarPeriodoRegistroCalificaciones(Periodo $periodo)
- {
-   try
-   {
-     $result = array();
-     $statement = $this->pdo->prepare("CALL up_buscar_periodo(?)");
-     $statement->bindParam(1, $periodo->__GET("id_periodo");
-     $statement->execute();
+  public function ListarPeriodoRegistroCalificacion(Periodo $periodo)
+  {
+    try
+    {
+      $result = array();
+      $statement = $this->pdo->prepare("CALL up_listar_periodo_registro_calificacion(?)");
+      $statement->bindParam(1, $periodo->__GET("id_periodo");
+      $statement->execute();
 
-     foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
-     {
-       $periodo = new Periodo();
-       $periodo->__SET('id_periodo', $r->id_periodo);
-       $periodo->__SET('descripcion', $r->descripcion);
+      foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
+      {
+        $periodo = new Periodo();
+        $periodo->__SET('id_periodo', $r->id_periodo);
+        $periodo->__SET('periodo', $r->periodo);
 
-       $result[] = $periodo;
-     }
+        $result[] = $periodo;
+      }
 
-     return $result;
-   }
-   catch(Exception $e)
-   {
-     die($e->getMessage());
-   }
- }
+      return $result;
+    } catch(Exception $e)
+    {
+      die($e->getMessage());
+    }
+  }
 }
  ?>
