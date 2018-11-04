@@ -10,9 +10,10 @@ class Arcalificacion_nota
 
 	public function _CONSTRUCT()
 	{
-		$this-> id_arcalificacion = new Alumno_rcalificacion();
-		$this-> id_nota = new Nota();
+		$this->id_arcalificacion = new Alumno_rcalificacion();
+		$this->id_nota = new Nota();
 	}
+
 	public function __GET($x)
 	{
 		return $this->$x;
