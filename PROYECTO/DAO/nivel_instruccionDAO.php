@@ -8,8 +8,8 @@ class Nivel_instruccionDAO
 
 	public function __CONSTRUCT()
 	{
-			$dba = new DBAccess();
-			$this->pdo = $dba->get_connection();
+		$dba = new DBAccess();
+		$this->pdo = $dba->get_connection();
 	}
 
 	/*Registrar nivel_instruccion*/
