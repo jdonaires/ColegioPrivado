@@ -8,8 +8,8 @@ class Curso_competenciaDAO
 
 	public function __CONSTRUCT()
 	{
-			$dba = new DBAccess();
-			$this->pdo = $dba->get_connection();
+		$dba = new DBAccess();
+		$this->pdo = $dba->get_connection();
 	}
 
 	public function Registrar(Curso_competencia $curso_competencia)
@@ -38,7 +38,6 @@ class Curso_competenciaDAO
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
 				$curso_competencia = new Curso_competencia();
-
 				$curso_competencia->__SET('id_ccompetencia', $r->id_ccompetencia);
 				$curso_competencia->__SET('id_competencia', $r->id_competencia;
 				$curso_competencia->__SET('id_curso', $r->id_curso);
