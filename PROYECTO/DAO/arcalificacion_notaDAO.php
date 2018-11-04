@@ -8,8 +8,8 @@ class Arcalificacion_notaDAO
 
 	public function __CONSTRUCT()
 	{
-			$dba = new DBAccess();
-			$this->pdo = $dba->get_connection();
+		$dba = new DBAccess();
+		$this->pdo = $dba->get_connection();
 	}
 
 	public function Registrar(Arcalificacion_nota $arcalificacion_nota)
@@ -33,9 +33,9 @@ class Arcalificacion_notaDAO
 		{
 			$result = array();
 			$statement = $this->pdo->prepare("CALL up_buscar_arcalificacion_nota(?,?,?)");
-			$statement->bindParam(1,$arcalificacion_nota->__GET('id_arcnotas'));
-			$statement->bindParam(2,$arcalificacion_nota->__GET('id_arcalificacion'))
-			$statement->bindParam(2,$arcalificacion_nota->__GET('id_nota'))
+			$statement->bindParam(1, $arcalificacion_nota->__GET('id_arcnotas'));
+			$statement->bindParam(2, $arcalificacion_nota->__GET('id_arcalificacion'))
+			$statement->bindParam(3, $arcalificacion_nota->__GET('id_nota'))
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)

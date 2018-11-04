@@ -8,8 +8,8 @@ class AulaDAO
 
 	public function __CONSTRUCT()
 	{
-			$dba = new DBAccess();
-			$this->pdo = $dba->get_connection();
+		$dba = new DBAccess();
+		$this->pdo = $dba->get_connection();
 	}
 
 	public function Registrar(Aula $aula)
@@ -42,15 +42,14 @@ class AulaDAO
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
 				$aula = new Aula();
-
 		    $aula->__SET('id_aula', $r->id_aula);
 				$aula->__SET('descripcion', $r->descripcion);
 				$aula->__SET('numero_aula', $r->numero_aula);
 				$aula->__SET('numero_alumno', $r->numero_alumno);
         $aula->__SET('turno', $r->turno);
-				$aula->__GET('id_docente')->__GET('id_persona')->__SET('nombres', $r->nombre);
-				$aula->__GET('id_docente')->__GET('id_persona')->__SET('apellidosP', $r->apellido_paterno);
-				$aula->__GET('id_docente')->__GET('id_persona')->__SET('apellidosM', $r->apellido_materno);
+				$aula->__GET('id_docente')->__GET('id_persona')->__SET('nombre', $r->nombre);
+				$aula->__GET('id_docente')->__GET('id_persona')->__SET('apellido_paterno', $r->apellido_paterno);
+				$aula->__GET('id_docente')->__GET('id_persona')->__SET('apellido_materno', $r->apellido_materno);
 				$aula->__GET('id_grado')->__SET('grado', $r->grado);
 				$aula->__GET('id_seccion')->__SET('seccion',$r->seccion);
 

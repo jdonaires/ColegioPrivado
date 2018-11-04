@@ -34,8 +34,8 @@ class ApoderadoDAO
 		try
 		{
 			$result = array();
-			$statement = $this->pdo->prepare("call up_listar_apoderado(?)");
-			$statement->bindParam(1,$apoderado->__GET('id_persona'));
+			$statement = $this->pdo->prepare("CALL up_listar_apoderado(?)");
+			$statement->bindParam(1, $apoderado->__GET('id_persona'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
