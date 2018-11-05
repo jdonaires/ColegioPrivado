@@ -12,6 +12,7 @@ class AulaDAO
 		$this->pdo = $dba->get_connection();
 	}
 
+	/*Se utiliza para el proceso registrar aula*/
 	public function Registrar(Aula $aula)
 	{
 		try
@@ -31,12 +32,13 @@ class AulaDAO
 		}
 	}
 
+		/*Se utiliza para el proceso registrar aula*/
 	public function Listar()
 	{
 		try
 		{
 			$result = array();
-			$statement = $this->pdo->prepare("call up_listar_aula()");
+			$statement = $this->pdo->prepare("CALL up_listar_aula()");
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)

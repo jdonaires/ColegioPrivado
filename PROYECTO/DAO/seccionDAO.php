@@ -1,6 +1,6 @@
 <?php
-require_once '../DAL/DBAcces.php';
-require_once '../BOL/secciones.php';
+require_once '../DAL/DBAccess.php';
+require_once '../BOL/seccion.php';
 
 class seccionDAO
 {
@@ -47,6 +47,30 @@ class seccionDAO
 			return $result;
 		}
 		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+
+	/*Se utiliza para el proceso registrar aula*/
+	public function Listar()
+	{
+		try
+		{
+			$result = array();
+			$statement = $this->pdo->prepare("CALL up_listar_seccion()");
+			$statement->execute();
+
+			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
+			{
+				$seccion = new Seccion();
+				$seccion->__SET('id_seccion', $r->id_seccion);
+				$seccion->__SET('seccion', $r->seccion);
+
+				$result[] = $seccion;
+			}
+			return $result;
+		} catch(Exception $e)
 		{
 			die($e->getMessage());
 		}
