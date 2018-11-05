@@ -8,46 +8,54 @@ class FuncionDAO
 
 	public function __CONSTRUCT()
 	{
-		$dba = new DBAccess();
-		$this->pdo = $dba->get_connection();
+			$dba = new DBAccess();
+			$this->pdo = $dba->get_connection();
 	}
 
-	public function Registrar(Funcion $funcion)
+	public function Registrar(Funcion1 $funcion)
 	{
 		try
 		{
-			$statement = $this->pdo->prepare("CALL up_registrar_funcion(?)");
-			$statement->bindParam(1, $funcion->__GET('funcion'));
-			$statement->execute();
+		$statement = $this->pdo->prepare("CALL up_insertar_funcion(?,?)");
+
+    	$statement->bindParam(1,$funcion->__GET('id_funcion'));
+		$statement->bindParam(2,$funcion->__GET('funcion'));
+
+
 		} catch (Exception $e)
 		{
 			die($e->getMessage());
 		}
 	}
 
-	public function Bsucar(Funcion $funcion)
+	public function Listar(Funcion1 $funcion)
 	{
 		try
 		{
 			$result = array();
-			$statement = $this->pdo->prepare("CALL up_buscar_funcion(?)");
-			$statement->bindParam(1, $funcion->__GET('id_funcion'));
+
+			$statement = $this->pdo->prepare("call up_listar_funcion(?)");
+			$statement->bindParam(1,$funcion->__GET('id_funcion'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
-				$funcion = new Funcion();
+							$funcion = new Funcion1();
+
 		    $funcion->__SET('id_funcion', $r->id_funcion);
-				$funcion->__SET('funcion', $r->funcion);
+			  $funcion->__SET('funcion', $r->funcion);
+
 
 				$result[] = $funcion;
 			}
 
 			return $result;
-		} catch(Exception $e)
+		}
+		catch(Exception $e)
 		{
 			die($e->getMessage());
 		}
 	}
 }
+
 ?>
