@@ -25,12 +25,12 @@ class Estado_civilDAO
 		}
 	}
 
-	public function Buscar(Estado_civil $estado_civil)
+	public function Listar(Estado_civil $estado_civil)
 	{
 		try
 		{
 			$result = array();
-			$statement = $this->pdo->prepare("call up_buscar_estado_civil(?)");
+			$statement = $this->pdo->prepare("call up_listar_estado_civil(?)");
 			$statement->bindParam(1, $estado_civil->__GET('estado_civil'));
 			$statement->execute();
 
@@ -50,5 +50,7 @@ class Estado_civilDAO
 		}
 	}
 }
+
+?>
 
 ?>
