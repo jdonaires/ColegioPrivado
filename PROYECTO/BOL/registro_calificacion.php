@@ -1,9 +1,9 @@
-<?php 
-require 'alumnos_rcalificacion.php';
-require 'periodos.php';
-require 'grados_curso.php';
+<?php
+require 'alumno_rcalificacion.php';
+require 'periodo.php';
+require 'grado_curso.php';
 require 'seccion.php';
-require 'docentes.php';
+require 'docente.php';
 
 class Registro_calificacion
 {
@@ -15,25 +15,23 @@ class Registro_calificacion
 	private $id_seccion;
 	private $id_docente;
 
-	public function __construct(){
-		$this->id_rcalificacion = new Alumnos_rcalificacion();
+	public function __construct()
+	{
 		$this->id_periodo = new Periodos();
 		$this->id_grado = new grados_cursos();
 		$this->id_seccion = new Seccion();
 		$this->id_docente = new Docente();
-		
+
 	}
 
 	public function __GET($x)
-	{ 
-		return $this->$x; 
+	{
+		return $this->$x;
 	}
+
 	public function __SET($x, $y)
-	{ 
-		return $this->$x = $y; 
+	{
+		return $this->$x = $y;
 	}
-
 }
-
-
 ?>
