@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once '../BOL/aula.php';
 require_once '../DAO/aulaDAO.php';
 
@@ -12,10 +12,10 @@ require_once '../BOL/seccion.php';
 require_once '../DAO/seccionDAO.php';
 
 $docente = new Docente();
-$docenteDAO = new DocenteDAO();
+$docenteDAO2 = new DocenteDAO2();
 
-$resultado_docente = array();
-$resultado_docente = $docenteDAO->Listar();
+$resultado_docente2 = array();
+$resultado_docente2 = $docenteDAO2->Listar2();
 
 $grado = new Grado();
 $gradoDAO = new GradoDAO();
@@ -83,9 +83,9 @@ if(isset($_POST['guardar']))
 						<th style="text-align:left;">Docente:</th>
 						<td><select name="id_docente" style="width:100%;">
 							<?php
-							if(!empty($resultado_docente))
+							if(!empty($resultado_docente2))
 							{
-								foreach( $resultado_docente as $r_d):
+								foreach( $resultado_docente2 as $r_d):
 							?>
 									<option value="<?php echo $r_d->__GET('id_persona')->__GET('id_persona');?>"><?php echo $r_d->__GET('id_persona')->__GET('apellido_paterno')." ".
 									$r_d->__GET('id_persona')->__GET('apellido_materno').", ".$r_d->__GET('id_persona')->__GET('nombre');?></option>
@@ -202,3 +202,4 @@ if(isset($_POST['guardar']))
 	</table>
 </body>
 </html>
+
