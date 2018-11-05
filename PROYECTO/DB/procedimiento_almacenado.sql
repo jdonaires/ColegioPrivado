@@ -73,6 +73,19 @@ select * from personas where id_persona LIKE CONCAT('%', _id_persona , '%');
 END
 $$
 
+# BUSCAR estado civil
+DELIMITER $$
+CREATE PROCEDURE up_listar_estado_civil
+(
+    IN _id_ecivil VARCHAR(20)
+)
+BEGIN
+
+select * from estados_civiles where id_ecivil LIKE CONCAT('%', _id_ecivil , '%');
+
+END
+$$
+
 /*Registra una nueva capacidad*/
 DELIMITER $$
 CREATE PROCEDURE up_registrar_capacidad
