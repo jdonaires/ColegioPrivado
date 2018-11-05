@@ -62,6 +62,9 @@ class DocenteDAO
 					$docente->__GET('id_persona')->__SET('id_persona', $r->id_persona);
 					$docente->__SET('estado', $r->estado);
 					$docente->__GET('id_funcion')->__SET('id_funcion', $r->id_funcion);
+					$docente->__GET('id_persona')->__SET('nombre', $r->nombre);
+					$docente->__GET('id_persona')->__SET('apellido_paterno', $r->apellido_paterno);
+					$docente->__GET('id_persona')->__SET('apellido_materno', $r->apellido_materno);
 
 					$result[] = $docente;
 				}
@@ -74,43 +77,4 @@ class DocenteDAO
 			}
 		}
 }
-
-	class DocenteDAO2
-		{
-			private $pdo;
-
-			public function __CONSTRUCT()
-			{
-		    $dba = new DBAccess();
-		    $this->pdo = $dba->get_connection();
-			}
-  /*Se utiliza para el proceso listar aula*/
-	/*se le ha asignado docente2 por ser la continuidad*/
-	public function Listar2()
-	{
-		try
-		{
-			$result = array();
-			$statement = $this->pdo->prepare("CALL up_listar_docente2()");
-			$statement->execute();
-
-			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
-			{
-				$docente2 = new Docente();
-				$docente2->__GET('id_persona')->__SET('id_persona', $r->id_persona);
-				$docente2->__GET('id_persona')->__SET('nombre', $r->nombre);
-				$docente2->__GET('id_persona')->__SET('apellido_paterno', $r->apellido_paterno);
-				$docente2->__GET('id_persona')->__SET('apellido_materno', $r->apellido_materno);
-
-				$result[] = $docente2;
-			}
-
-			return $result;
-		} catch(Exception $e)
-		{
-			die($e->getMessage());
-		}
-	}
-}
-
 ?>

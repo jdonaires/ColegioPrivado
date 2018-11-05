@@ -20,7 +20,7 @@ BEGIN
 DECLARE ultimoID INT;
 
 SET ultimoID = uf_registrar_persona(
-_nombre, 
+_nombre,
 _apellido_paterno,
 _apellido_materno,
 _numero_documento,
@@ -55,7 +55,7 @@ CREATE PROCEDURE up_listar_docente
 )
 BEGIN
 
-select * from docentes where id_persona LIKE CONCAT('%', _id_persona , '%');
+SELECT * FROM docentes d INNER JOIN personas p ON d.id_persona = p.id_persona where d.id_persona LIKE CONCAT('%', _id_persona , '%');
 
 END
 $$
@@ -183,7 +183,7 @@ $$
   DROP PROCEDURE IF EXISTS up_insertar_persona$$
   CREATE PROCEDURE up_insertar_persona
   (
-  
+
   IN Nombre VARCHAR(100),
   IN Apellido_paterno VARCHAR(50),
   IN Apellido_materno VARCHAR(50),
@@ -193,12 +193,12 @@ $$
   IN Direccion VARCHAR(80),
   IN Telefono VARCHAR(20),
   IN Id_tdocumento char(6) ,
-  IN Id_ecivil char(6) 
+  IN Id_ecivil char(6)
   )
   BEGIN
   DECLARE contador INT(11);
   DECLARE id CHAR(6),
-          SET contador= (SELECT COUNT(*)+1 FROM personas); 
+          SET contador= (SELECT COUNT(*)+1 FROM personas);
           IF(contador<10)THEN
               SET id= CONCAT('P0000',contador);
           ELSE IF(contador<100) THEN
@@ -210,13 +210,13 @@ $$
           ELSE IF(contador<100000)THEN
             SET id= CONCAT('P',contador);
           END IF;
-          END IF;        
           END IF;
           END IF;
-          END IF; 
-      
+          END IF;
+          END IF;
+
   insert into personas
-  (id_persona,nombre,apellido_paterno,apellido_materno,numero_documento,fecha_nacimiento,sexo,direccion,telefono,id_tdocumento,id_ecivil) 
+  (id_persona,nombre,apellido_paterno,apellido_materno,numero_documento,fecha_nacimiento,sexo,direccion,telefono,id_tdocumento,id_ecivil)
   values
   (id,Nombre,Apellido_paterno,Apellido_materno,Numero_documento,Fecha_nacimiento,Sexo,Direccion,Telefono,Id_tdocumento,Id_ecivil);
   END
@@ -229,7 +229,7 @@ DELIMITER $$
 CREATE PROCEDURE up_consulta_Persona()
 BEGIN
 SELECT p.nombre, p.apellido_materno, p.apellido_paterno,p.fecha_nacimiento, p.numero_documento,
-tD.tipo_documento, eC.estado_civil FROM personas AS p 
+tD.tipo_documento, eC.estado_civil FROM personas AS p
 INNER JOIN tipos_documentos AS tD ON tD.id_tdocumento = p.id_tdocumento
 INNER JOIN estados_civiles AS eC on eC.id_ecivil = p.id_ecivil;
 END
@@ -241,42 +241,39 @@ DELIMITER $$
 CREATE PROCEDURE up_consulta_Persona_DNI(IN identidad varchar(20))
 BEGIN
 SELECT p.nombre, p.apellido_materno, p.apellido_paterno,p.fecha_nacimiento, p.numero_documento,
-tD.tipo_documento, eC.estado_civil FROM personas AS p 
+tD.tipo_documento, eC.estado_civil FROM personas AS p
 INNER JOIN tipos_documentos AS tD ON tD.id_tdocumento = p.id_tdocumento
 INNER JOIN estados_civiles AS eC on eC.id_ecivil = p.id_ecivil
 WHERE p.numero_documento = identidad;
 END
 
 /*FIN DE LA TABLA PERSONA*/
-							      
-					
-							      
+
+
+
 /* Procedimiento Almacenado para registrar Arcalificacion nota */
 
-DELIMITER $$ 
+DELIMITER $$
 
 CREATE PROCEDURE up_registrar_arcalificacion_nota
-(IN _id_arcalificacion INT(11), 
+(IN _id_arcalificacion INT(11),
 IN _id_nota INT(11)
 )
-BEGIN 
+BEGIN
 
-INSERT INTO arcalificacion_notas(id_arcalificacion, id_nota) VALUES (_id_arcalificacion, _id_nota); 
+INSERT INTO arcalificacion_notas(id_arcalificacion, id_nota) VALUES (_id_arcalificacion, _id_nota);
 END
-$$ 
+$$
 
 /* Procedimiento almacenado para buscar arcalificacion nota */
 
-DELIMITER $$ 
+DELIMITER $$
 CREATE PROCEDURE up_buscar_arcalificacion_nota(
 IN _arcalificacion_notas INT(11)
-) 
-BEGIN 
-SELECT * FROM arcalificacion_notas where arcalificacion_notas =arcalificacion_notas; 
+)
+BEGIN
+SELECT * FROM arcalificacion_notas where arcalificacion_notas =arcalificacion_notas;
 END
-$$ 
+$$
 
 /* Fin del Procedimiento Almacenado de Arcalificacion nota */
-
-
-							      
