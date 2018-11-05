@@ -86,6 +86,19 @@ select * from estados_civiles where id_ecivil LIKE CONCAT('%', _id_ecivil , '%')
 END
 $$
 
+# BUSCAR TIPO DOCUMENTO
+DELIMITER $$
+CREATE PROCEDURE up_listar_tipos_documentos
+(
+    IN _id_tdocumento VARCHAR(20)
+)
+BEGIN
+
+select * from tipos_documentos where id_tdocumento LIKE CONCAT('%', _id_tdocumento , '%');
+
+END
+$$
+
 /*Registra una nueva capacidad*/
 DELIMITER $$
 CREATE PROCEDURE up_registrar_capacidad
