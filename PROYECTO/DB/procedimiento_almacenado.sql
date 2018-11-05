@@ -34,6 +34,19 @@ INSERT INTO docentes(id_persona, estado, id_funcion) VALUES (ultimoID,_estado,_i
 END
 $$
 
+# BUSCAR funcion
+DELIMITER $$
+CREATE PROCEDURE up_listar_funcion
+(
+    IN _id_funcion VARCHAR(20)
+)
+BEGIN
+
+select * from funciones where id_funcion LIKE CONCAT('%', _id_funcion , '%');
+
+END
+$$
+
 /*Registra una nueva capacidad*/
 DELIMITER $$
 CREATE PROCEDURE up_registrar_capacidad
