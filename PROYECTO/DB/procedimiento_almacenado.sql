@@ -46,12 +46,16 @@ END
 $$
 
 DELIMITER $$
-CREATE PROCEDURE up_listar_docente
+CREATE PROCEDURE up_listar_docente2
 (
+
 )
+
 BEGIN
 	SELECT * FROM docentes d INNER JOIN personas p ON d.id_persona = p.id_persona;
+
 END
+
 $$
 
 DELIMITER $$
