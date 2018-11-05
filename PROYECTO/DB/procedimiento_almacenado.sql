@@ -1,3 +1,39 @@
+# Registrar docente procedimiento almacenado
+DELIMITER $$
+CREATE PROCEDURE up_registrar_docente
+(
+	    IN _estado VARCHAR(20),
+	    IN _id_funcion VARCHAR(20),
+
+      IN _nombre VARCHAR(20),
+      IN _apellido_paterno VARCHAR(20),
+      IN _apellido_materno VARCHAR(20),
+      IN _numero_documento VARCHAR(20),
+      IN _fecha_nacimiento VARCHAR(20),
+      IN _sexo VARCHAR(20),
+      IN _direccion VARCHAR(20),
+      IN _telefono VARCHAR(20),
+      IN _id_tdocumento VARCHAR(20),
+      IN _id_ecivil VARCHAR(20)
+)
+BEGIN
+DECLARE ultimoID INT;
+
+SET ultimoID = uf_registrar_persona(
+_nombre, 
+_apellido_paterno,
+_apellido_materno,
+_numero_documento,
+_fecha_nacimiento,
+_sexo,_direccion,
+_telefono,
+_id_tdocumento,
+_id_ecivil
+);
+INSERT INTO docentes(id_persona, estado, id_funcion) VALUES (ultimoID,_estado,_id_funcion);
+END
+$$
+
 /*Registra una nueva capacidad*/
 DELIMITER $$
 CREATE PROCEDURE up_registrar_capacidad
