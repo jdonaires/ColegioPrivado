@@ -33,33 +33,31 @@ class PersonaDAO
 			die($e->getMessage());
 		}
 	}
-	public function Listar()
+	public function Listar(Persona $persona)
 	{
 		try
 		{
 			$result = array();
-			$statement = $this->pdo->prepare("CALL up_listar_persona()");
+
+			$statement = $this->pdo->prepare("call up_listar_persona(?)");
+			$statement->bindParam(1,$persona->__GET('id_persona'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
 				$persona = new Persona();
-				$persona->__SET('nombre', $r->nombre);
-				$persona->__SET('apellido_materno', $r->apellido_materno);
-				$persona->__SET('apellido_paterno', $r->apellido_paterno);
-				$persona->__SET('fecha_nacimiento', $r->fecha_nacimiento);
-				$persona->__SET('numero_documento', $r->numero_documento);
-				$persona->__SET('sexo', $r->sexo);
-				$persona->__SET('direccion', $r->direccion);
-				$persona->__SET('telefono', $r->telefono);
-				$persona->__GET('id_tdocumento')->__SET('tipo_documento', $r->tipo_documento);
-				$persona->__GET('id_ecivil')->__SET('estado_civil', $r->estado_civil);
 
+				$persona->__SET('id_persona', $r->id_persona);
+				$persona->__SET('nombre', $r->nombre);
+				$persona->__SET('apellido_paterno', $r->apellido_paterno);
+				$persona->__SET('apellido_materno', $r->apellido_materno);
+				$persona->__SET('numero_documento', $r->numero_documento);
 				$result[] = $persona;
 			}
 
 			return $result;
-		} catch(Exception $e)
+		}
+		catch(Exception $e)
 		{
 			die($e->getMessage());
 		}
