@@ -1,27 +1,20 @@
 <?php
-
-require 'persona.php';
-require 'funcion.php';
+require funciones.php;
+require personas.php;
+require aulas.php;
+require registros_calificaciones.php;
 
 class Docente
 {
-	/*CAMPOS QUE REQUIERE LA TABLA DOCENTE*/
 	private $id_persona;
- 	/*CAMPOS DE LA TABLA DOCENTE*/
 	private $estado;
-	/*CAMPOS QUE REQUIERE LA TABLA DOCENTE*/
 	private $id_funcion;
 
-	/*CREANDO EL CONSTRUCTOR*/
-
-	public function __construct()
-	{
+public function __CONSTRUCT()
+{
 		$this->id_persona = new Persona();
-		$this->id_funcion = new Funcion1();
-	}
-
-	/*EL GET (INGRESAR) Y EL SET (OBTENER)*/
-
+		$this->id_funcion = new Funcion();
+}
 	public function __GET($x)
 	{
 		return $this->$x;
