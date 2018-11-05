@@ -248,3 +248,35 @@ WHERE p.numero_documento = identidad;
 END
 
 /*FIN DE LA TABLA PERSONA*/
+							      
+					
+							      
+/* Procedimiento Almacenado para registrar Arcalificacion nota */
+
+DELIMITER $$ 
+
+CREATE PROCEDURE up_registrar_arcalificacion_nota
+(IN _id_arcalificacion INT(11), 
+IN _id_nota INT(11)
+)
+BEGIN 
+
+INSERT INTO arcalificacion_notas(id_arcalificacion, id_nota) VALUES (_id_arcalificacion, _id_nota); 
+END
+$$ 
+
+/* Procedimiento almacenado para buscar arcalificacion nota */
+
+DELIMITER $$ 
+CREATE PROCEDURE up_buscar_arcalificacion_nota(
+IN _arcalificacion_notas INT(11)
+) 
+BEGIN 
+SELECT * FROM arcalificacion_notas where arcalificacion_notas =arcalificacion_notas; 
+END
+$$ 
+
+/* Fin del Procedimiento Almacenado de Arcalificacion nota */
+
+
+							      
