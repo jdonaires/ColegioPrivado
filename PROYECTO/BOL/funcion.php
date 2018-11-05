@@ -1,6 +1,7 @@
 <?php
-class Funcion
+class Funcion1
 {
+	/*Funcion es una tabla independiente*/
 	private $id_funcion;
 	private $funcion;
 
@@ -8,7 +9,6 @@ class Funcion
 	{
 		return $this->$x;
 	}
-	
 	public function __SET($x, $y)
 	{
 		return $this->$x = $y;
