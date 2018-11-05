@@ -1,6 +1,6 @@
 <?php
 require_once 'tipo_documento.php';
-require_once 'estado_civil.php'
+require_once 'estado_civil.php';
 
 class Persona
 {

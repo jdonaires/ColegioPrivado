@@ -14,7 +14,7 @@ INSERT INTO personas VALUES (null, 'Rosa', 'Loza', 'Salas', '649372', '1980-01-0
 INSERT INTO docentes VALUES ('1', '1', '1');
 INSERT INTO docentes VALUES ('2', '1', '1');
 
-INSERT INTO aulas VALUES (null, 'Prueba', '23', '43', 'm', '1', '1', '1');
+INSERT INTO aulas VALUES (null, 'Prueba', '23', '43', 'M', '1', '1', '1');
 
 INSERT INTO competencias VALUES (null, 'Lectura', '1'), (null, 'Comprensión', '2');
 

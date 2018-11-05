@@ -196,7 +196,7 @@ if(isset($_POST['guardar']))
     endforeach;
 	} else
 	{
-    echo 'No se encuentran registros.';
+    echo '<td colspan="8">No se encuentran registros.</td>';
 	}
 	?>
 	</table>
