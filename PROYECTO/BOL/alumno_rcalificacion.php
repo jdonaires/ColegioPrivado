@@ -3,7 +3,7 @@ require_once 'arcalificacion_nota.php';
 require_once 'registro_calificacion.php';
 require_once 'estudiante';
 
-class Alumnos_rcalificacion
+class Alumno_rcalificacion
 {
   private $id_arcalificacion;
   private $id_rcalificacion;
