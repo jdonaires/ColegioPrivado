@@ -60,6 +60,19 @@ select * from docentes where id_persona LIKE CONCAT('%', _id_persona , '%');
 END
 $$
 
+# BUSCAR persona
+DELIMITER $$
+CREATE PROCEDURE up_listar_persona
+(
+    IN _id_persona VARCHAR(20)
+)
+BEGIN
+
+select * from personas where id_persona LIKE CONCAT('%', _id_persona , '%');
+
+END
+$$
+
 /*Registra una nueva capacidad*/
 DELIMITER $$
 CREATE PROCEDURE up_registrar_capacidad
