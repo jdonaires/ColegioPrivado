@@ -14,7 +14,7 @@ class Aula
 	private $id_grado;
 	private $id_seccion;
 
-	public function __construct()
+	public function __CONSTRUCT()
 	{
 		$this->id_docente = new Docente();
 		$this->id_grado = new Grado();
@@ -25,7 +25,7 @@ class Aula
 	{
 		return $this->$x;
 	}
-	
+
 	public function __SET($x, $y)
 	{
 		return $this->$x = $y;
