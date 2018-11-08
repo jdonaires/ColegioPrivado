@@ -34,6 +34,33 @@ INSERT INTO docentes(id_persona, estado, id_funcion) VALUES (ultimoID,_estado,_i
 END
 $$
 
+
+
+#director
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `up_registrar_director`(IN `_nombre` VARCHAR(100), IN `_apellido_paterno` VARCHAR(50), IN `_apellido_materno` VARCHAR(50), IN `_numero_documento` VARCHAR(20), IN `_fecha_nacimiento` DATE, IN `_sexo` CHAR(1), IN `_direccion` VARCHAR(80), IN `_telefono` VARCHAR(20), IN `_id_tdocumento` INT(11), IN `_id_ecivil` INT(11), IN `_id_funcion` INT(11), IN `_estado` CHAR(1))
+BEGIN
+ 
+  DECLARE _id INT (11);
+    SET _id = (SELECT fu_registrar_persona(_nombre, _apellido_paterno, _apellido_materno, _numero_documento, _fecha_nacimiento, _sexo, _direccion, _telefono, _id_tdocumento, _id_ecivil,_id_funcion,_estado));
+    
+
+
+
+    INSERT INTO directores VALUES (_id, _id);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `up_buscar_director`(IN `_id_persona` INT(11))
+BEGIN
+
+##  SELECT * FROM directores e INNER JOIN personas p ON e.id_persona = p.id_persona;
+SELECT * FROM directores e INNER JOIN personas p where id_persona LIKE CONCAT('%', _id_persona , '%');
+END$$
+DELIMITER ;
+DELIMITER ;
+
 # BUSCAR funcion
 DELIMITER $$
 CREATE PROCEDURE up_listar_funcion
