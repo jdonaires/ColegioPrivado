@@ -18,13 +18,13 @@ class Tipo_documentoDAO
             $result = array();
 
             $statement = $this->pdo->prepare("call up_listar_tipos_documentos(?)");
-            $statement->bindParam(1,$tipo_documento->__GET('id'));
+            $statement->bindParam(1,$tipo_documento->__GET('id_tdocumento'));
             $statement->execute();
 
             foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
             {
                 $tipo_documento = new Tipo_documento();
-                $tipo_documento->__SET('id', $r->id_tdocumento);
+                $tipo_documento->__SET('id_tdocumento', $r->id_tdocumento);
                 $tipo_documento->__SET('tipo_documento', $r->tipo_documento);
 
                 $result[] = $tipo_documento;
