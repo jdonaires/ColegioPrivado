@@ -16,10 +16,10 @@ class CursoDAO
 	{
 		try
 		{
-		$statement = $this->pdo->prepare("CALL Proc_registrar_curso(?,?)");
-   	$statement->bindParam(1,$curso->__GET('id_curso'));
+		$statement = $this->pdo->prepare("CALL up_registrar_curso(?,?)");
+   		$statement->bindParam(1,$curso->__GET('id_curso'));
 		$statement->bindParam(2,$curso->__GET('curso'));
-    $statement -> execute();
+    	$statement -> execute();
 
 		} catch (Exception $e)
 		{
@@ -34,17 +34,17 @@ class CursoDAO
 			$result = array();
 
 			$statement = $this->pdo->prepare("call up_buscar_curso(?)");
-			$statement->bindParam(1,$id_curso->__GET('id_curso'));
+			$statement->bindParam(1,$curso->__GET('id_curso'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
-				$per = new Persona();
+				$curso = new Curso();
 
-				$per->__SET('id_curso', $r->id_curso);
-				$per->__SET('curso', $r->curso);
+				$curso->__SET('id_curso', $r->id_curso);
+				$curso->__SET('curso', $r->curso);
 
-				$result[] = $per;
+				$result[] = $curso;
 			}
 
 			return $result;

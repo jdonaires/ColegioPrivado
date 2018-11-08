@@ -2,7 +2,7 @@
 require_once('../DAL/DBAccess.php');
 require_once('../BOL/docente.php');
 
-class InstitucionesDAO
+class DocenteDAO
 {
 	private $pdo;
 
@@ -12,14 +12,14 @@ class InstitucionesDAO
 			$this->pdo = $dba->get_connection();
 	}
 
-	public function Registrar(Instituciones $instituciones)
+	public function Registrar(Docente $docente)
 	{
 		try
 		{
-		$statement = $this->pdo->prepare("CALL PROC_REGISTRAR_INSTITUCIONES(?,?,?)");
-   		$statement->bindParam(1,$docentes->__GET('id_persona'));
-			$statement->bindParam(2,$docentes->__GET('estado'));
-			$statement->bindParam(3,$docentes->__GET('id_funcion'));
+		$statement = $this->pdo->prepare("CALL up_registrar_docente(?,?,?)");//MODIFICAR NOMBRE DE PROCEDIMIENTO
+   		$statement->bindParam(1,$docente->__GET('id_persona'));
+		$statement->bindParam(2,$docente->__GET('estado'));
+		$statement->bindParam(3,$docente->__GET('id_funcion'));
 
 
     $statement -> execute();
@@ -31,24 +31,25 @@ class InstitucionesDAO
 	}
 
 
-	public function Listar(Docentes $docentes)
+	public function Listar(Docente $docente)
 	{
 		try
 		{
 			$result = array();
 
-			$statement = $this->pdo->prepare("call up_buscar_id_curso(?)");
-			$statement->bindParam(1,$id_persona->__GET('id_persona'));
+			$statement = $this->pdo->prepare("call up_buscar_docente(?)");//MODIFICAR NOMBRE DE PROCEDIMIENTO
+			$statement->bindParam(1,$docente->__GET('id_persona'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
-				$per = new Persona();
+				$docente = new Docente();
 
-				$per->__SET('$id_persona', $r->id_persona);
-				$per->__SET('estado', $r->estado);
+				$docente->__SET('$id_persona', $r->id_persona);
+				$docente->__SET('estado', $r->estado);
+				$docente->__SET('id_funcion', $r->id_funcion);
 
-				$result[] = $per;
+				$result[] = $docente;
 			}
 
 			return $result;
@@ -58,7 +59,7 @@ class InstitucionesDAO
 			die($e->getMessage());
 		}
 	}
-*/
+
 }
 
 ?>

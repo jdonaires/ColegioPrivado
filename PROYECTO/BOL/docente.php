@@ -1,9 +1,9 @@
 <?php
-require funciones.php;
-require personas.php;
-require aulas.php;
-require registros_calificaciones.php;
-
+require_once 'funcion.php';
+require_once 'persona.php';
+/*require aulas.php;
+require registro_calificacion.php;
+*/
 class Docente
 {
 	private $id_persona;

@@ -1,7 +1,7 @@
 <?php
-require grado_cursos.php;
-require cursos_competencias.php;
-
+/*require 'grado_curso.php';
+require 'curso_competencia.php';
+*/
 class Curso
 {
 	private $id_curso;
@@ -9,8 +9,8 @@ class Curso
 
 public function __CONSTRUCT
 {
-		$this->id_curso = new idCurso();
-		$this->curso= new Curso();
+		/*$this->id_curso = new idCurso();
+		$this->curso= new Curso();*/
 }
 	public function __GET($x)
 	{

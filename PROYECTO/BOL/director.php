@@ -1,4 +1,6 @@
 <?php
+require_once 'funcion.php';
+require_once 'persona.php';
 class Director
 {
 	private $id_persona;
@@ -7,7 +9,7 @@ class Director
 	
 	public function __CONTRUCT(){
 		$this->id_persona = new Persona();
-		$this->id_funcion = new funcion1();
+		$this->id_funcion = new funcion();
 }
 	public function __GET($x)
 	{ 

@@ -63,8 +63,8 @@ class DirectorDAO
 				$director->__GET('id_persona')->__SET('fecha_nacimiento', $r->fecha_nacimiento);
 				$director->__GET('id_persona')->__SET('direccion', $r->direccion);
 				$director->__GET('id_persona')->__SET('telefono', $r->telefono);
-				$sec->__SET('id_funcion', $r->id_funcion);
-				$sec->__SET('estado', $r->estado);
+				$director->__SET('id_funcion', $r->id_funcion);
+				$director->__SET('estado', $r->estado);
 
 				$result[] = $director;
 			}

@@ -1,5 +1,5 @@
 <?php
-class Funcion1
+class Funcion
 {
 	/*Funcion es una tabla independiente*/
 	private $id_funcion;
