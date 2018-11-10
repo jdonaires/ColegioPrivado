@@ -49,3 +49,12 @@ CALL up_insertar_persona(null,'adriel','alpanpan','alvino','87654321','1999-07-0
 CALL up_insertar_persona(null,'adriel','aljamon','alqueso','75654321','2000-07-07','F','muycercano','997654321',1,1);
 CALL up_insertar_persona(null,'jose','booleano','vasquez','74215478','2001-01-01','M','el carmen','954541928',1,1);
 CALL up_insertar_persona(null,'pedro','pela','rocas','98765432','2000-09-09','M','chincha','986541932',1,1);
+
+-- tabla nivel instruccion--
+INSERT INTO niveles_instrucciones (id_ninstruccion,nivel_instruccion) values (1,'nivel primaria');
+CALL up_registrar_nivel_instruccion(2,'nivel secundaria');
+CALL up_registrar_nivel_instruccion(3,'nivel tecnico');
+CALL up_registrar_nivel_instruccion(4,'nivel superior');
+
+----------------------
+
