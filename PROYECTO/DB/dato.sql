@@ -7,8 +7,6 @@ INSERT INTO secciones VALUES (null, 'A'), (null, 'B'), (null, 'C');
 INSERT INTO grados VALUES (null, 'Primer Grado'), (null, 'Segundo Grado');
 
 
-INSERT INTO tipos_documentos VALUES (null, 'Dni'), (null, 'Carnet de Extranjeria');
-
 -- otros tipos de documentos
 
 insert into tipos_documentos (id_tdocumento,tipo_documento)values(1,'DNI');
