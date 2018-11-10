@@ -277,3 +277,15 @@ END
 $$
 
 /* Fin del Procedimiento Almacenado de Arcalificacion nota */
+
+/*Procedimiento Almacenado - Registrar Nivel Instruccion*/
+DELIMITER $$
+CREATE PROCEDURE up_registrar_nivel_instruccion
+(
+ in _idN int,
+ in _nivel_instruccion VARCHAR(100)
+) 
+BEGIN
+    INSERT INTO niveles_instrucciones(id_ninstruccion,nivel_instruccion) VALUES (_idN,_nivel_instruccion);
+END
+$$
