@@ -3,8 +3,9 @@
 INSERT INTO funciones VALUES (null, 'Sin funciones extras');
 INSERT INTO funciones VALUES (null, 'Puede Matricular');
 
-INSERT INTO grados VALUES (null, 'Primer Grado'), (null, 'Segundo Grado');
 INSERT INTO secciones VALUES (null, 'A'), (null, 'B'), (null, 'C');
+INSERT INTO grados VALUES (null, 'Primer Grado'), (null, 'Segundo Grado');
+
 
 INSERT INTO tipos_documentos VALUES (null, 'Dni'), (null, 'Carnet de Extranjeria');
 
