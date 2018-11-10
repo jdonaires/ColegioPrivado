@@ -17,7 +17,7 @@ insert into tipos_documentos (id_tdocumento,tipo_documento)values(5,'CARNET DE F
 insert into tipos_documentos (id_tdocumento,tipo_documento)values(6,'CARNET DE FUERZAS ARMADAS');
 insert into tipos_documentos (id_tdocumento,tipo_documento)values(7,'PASAPORTE');
 
-INSERT INTO estados_civiles VALUES (null, 'Soltero'), (null, 'Casado');
+
 
 -- otros estados civiles
 
