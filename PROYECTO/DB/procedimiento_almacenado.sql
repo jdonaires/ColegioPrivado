@@ -309,4 +309,23 @@ begin
 end
 $$
 
+		
+/*PROCEDIMIENTO ALMACENADO PARA BUSCAR APODERADO */
 							      
+
+delimiter $$
+create procedure up_buscar_apoderados
+(
+	in _dni varchar(8)
+)
+begin
+	select concat(per.apellido_paterno, ' ', per.apellido_materno, ', ',per.nombre) as Apoderado,per.numero_documento, apo.centro_trabajo, apo.ocupacion, apo.correo, ni.nivel_instruccion 
+	from apoderados apo
+	inner join personas per on apo.id_persona = per.id_persona
+	inner join niveles_instrucciones ni on apo.id_ninstruccion = ni.id_ninstruccion
+    where per.numero_documento = _dni;
+end
+$$
+							      
+							      
+/*FIN */
