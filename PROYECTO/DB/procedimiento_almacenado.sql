@@ -289,10 +289,11 @@ BEGIN
     INSERT INTO niveles_instrucciones(id_ninstruccion,nivel_instruccion) VALUES (_idN,_nivel_instruccion);
 END
 $$
+							      
+							      
 /* PROCEDIMIENTO ALMACENADO PARA REGISTRAR APODERADO.*/
 
-use mydb;
-
+							      
 delimiter $$
 create procedure up_registrar_apoderados
 (
@@ -307,3 +308,5 @@ begin
  values (_id_persona,_centro_trabajo, _ocupacion,_correo,_id_ninstruccion);
 end
 $$
+
+							      
