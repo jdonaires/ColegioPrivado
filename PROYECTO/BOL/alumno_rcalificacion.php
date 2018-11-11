@@ -1,7 +1,7 @@
 <?php
 require_once 'arcalificacion_nota.php';
 require_once 'registro_calificacion.php';
-require_once 'estudiante';
+require_once 'estudiante.php';
 
 class Alumno_rcalificacion
 {
