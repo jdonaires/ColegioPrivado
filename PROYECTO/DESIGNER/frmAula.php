@@ -1,15 +1,15 @@
 ﻿<?php
-require_once '../BOL/aula.php';
-require_once '../DAO/aulaDAO.php';
+require_once('../BOL/aula.php');
+require_once('../DAO/aulaDAO.php');
 
-require_once '../BOL/docente.php';
-require_once '../DAO/docenteDAO.php';
+require_once('../BOL/docente.php');
+require_once('../DAO/docenteDAO.php');
 
-require_once '../BOL/grado.php';
-require_once '../DAO/gradoDAO.php';
+require_once('../BOL/grado.php');
+require_once('../DAO/gradoDAO.php');
 
-require_once '../BOL/seccion.php';
-require_once '../DAO/seccionDAO.php';
+require_once('../BOL/seccion.php');
+require_once('../DAO/seccionDAO.php');
 
 $docente = new Docente();
 $docenteDAO = new DocenteDAO();
