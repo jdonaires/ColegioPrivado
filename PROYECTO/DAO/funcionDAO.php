@@ -1,4 +1,4 @@
-<?php
+?php
 require_once '../DAL/DBAccess.php';
 require_once '../BOL/funcion.php';
 
@@ -12,7 +12,7 @@ class FuncionDAO
 			$this->pdo = $dba->get_connection();
 	}
 
-	public function Registrar(Funcion1 $funcion)
+	public function Registrar(Funcion $funcion)
 	{
 		try
 		{
@@ -28,7 +28,7 @@ class FuncionDAO
 		}
 	}
 
-	public function Listar(Funcion1 $funcion)
+	public function Listar(Funcion $funcion)
 	{
 		try
 		{
@@ -40,7 +40,7 @@ class FuncionDAO
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
 			{
-							$funcion = new Funcion1();
+							$funcion = new Funcion();
 
 		    $funcion->__SET('id_funcion', $r->id_funcion);
 			  $funcion->__SET('funcion', $r->funcion);
