@@ -25,7 +25,6 @@ $estado_civilDAO = new Estado_civilDAO();
 
 $tipo_documentoDAO = new Tipo_documentoDAO();
 
-
 if(isset($_POST['guardar']))
 {
 	$docente->__SET('estado',        												 $_POST['estado']);
@@ -133,7 +132,7 @@ if(isset($_POST['guardar']))
 														<td>
 															<?php
 																	$resultadoFuncion = array();//VARIABLE TIPO RESULTADO
-																	$funcion = new Funcion1();
+																	$funcion = new Funcion();
 																	$funcion->__SET('id_funcion','');
 																	$resultadoFuncion = $funcionDAO->Listar($funcion);
 															 ?>
