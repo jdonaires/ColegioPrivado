@@ -5,8 +5,7 @@ require_once('../BOL/tipo_documento.php');
 class Tipo_documentoDAO
 {
     private $pdo;
-
-	public function __construct()
+    public function __construct()
 	{
 			$dba = new DBAccess();
 			$this->pdo = $dba->get_connection();
