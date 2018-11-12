@@ -354,12 +354,12 @@ $$
 
 DELIMITER $$ 
 CREATE PROCEDURE up_registrar_curso_competencia(
-IN _id_cursos INT(11),
+IN _id_curso INT(11),
 IN _id_competencia INT(11)
 ) 
 BEGIN 
 
-INSERT INTO cursos_competencias(id_cursos, id_competencia) VALUES (_id_cursos,_id_competencia ); 
+INSERT INTO cursos_competencias(id_curso, id_competencia) VALUES (_id_curso,_id_competencia ); 
 END
 $$
 /*Fin */
