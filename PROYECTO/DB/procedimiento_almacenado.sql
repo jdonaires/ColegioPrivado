@@ -304,3 +304,89 @@ END
 $$
 
 /* Fin del Procedimiento Almacenado de Arcalificacion nota */
+
+/*Procedimiento Almacenado - Registrar Nivel Instruccion*/
+DELIMITER $$
+CREATE PROCEDURE up_registrar_nivel_instruccion
+(
+ in _idN int,
+ in _nivel_instruccion VARCHAR(100)
+) 
+BEGIN
+    INSERT INTO niveles_instrucciones(id_ninstruccion,nivel_instruccion) VALUES (_idN,_nivel_instruccion);
+END
+$$
+							      
+							      
+/* PROCEDIMIENTO ALMACENADO PARA REGISTRAR APODERADO.*/
+
+
+delimiter $$
+create procedure up_registrar_apoderados
+(
+  IN _id_persona  int(11),
+    IN _centro_trabajo varchar(80),
+    IN _ocupacion varchar(50),
+    IN _correo varchar(100),
+    IN _id_ninstruccion int(11)
+)
+begin
+ insert into apoderados (id_persona, centro_trabajo, ocupacion, correo, id_ninstruccion)
+ values (_id_persona,_centro_trabajo, _ocupacion,_correo,_id_ninstruccion);
+end
+$$
+
+
+/*PROCEDIMIENTO ALMACENADO PARA BUSCAR APODERADO */
+
+
+delimiter $$
+create procedure up_buscar_apoderados
+(
+	in _dni varchar(8)
+)
+begin
+	select concat(per.apellido_paterno, ' ', per.apellido_materno, ', ',per.nombre) as Apoderado,per.numero_documento, apo.centro_trabajo, apo.ocupacion, apo.correo, ni.nivel_instruccion
+	from apoderados apo
+	inner join personas per on apo.id_persona = per.id_persona
+	inner join niveles_instrucciones ni on apo.id_ninstruccion = ni.id_ninstruccion
+    where per.numero_documento = _dni;
+end
+$$
+
+
+/*FIN */
+
+/* PROCEDIMIENTO ALMACENADO PARA LISTAR LOS NIVELES DE INSTRUCCIONES*/
+
+
+
+delimiter $$
+create procedure up_listar_Nivel_Instruccion
+(
+  IN _id_ninstruccion int(11)
+
+)
+begin
+
+  SELECT * FROM niveles_instrucciones where id_ninstruccion = _id_ninstruccion;
+
+END
+
+$$
+							      
+							      
+
+/* Procedimiento Almacenado para Registrar curso competencia */
+
+DELIMITER $$ 
+CREATE PROCEDURE up_registrar_curso_competencia(
+IN _id_curso INT(11),
+IN _id_competencia INT(11)
+) 
+BEGIN 
+
+INSERT INTO cursos_competencias(id_curso, id_competencia) VALUES (_id_curso,_id_competencia ); 
+END
+$$
+/*Fin */

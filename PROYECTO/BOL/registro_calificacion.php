@@ -17,8 +17,8 @@ class Registro_calificacion
 
 	public function __construct()
 	{
-		$this->id_periodo = new Periodos();
-		$this->id_grado = new grados_cursos();
+		$this->id_periodo = new Periodo();
+		$this->id_grado = new Grado_curso();
 		$this->id_seccion = new Seccion();
 		$this->id_docente = new Docente();
 
