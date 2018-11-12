@@ -58,3 +58,8 @@ CALL up_registrar_nivel_instruccion(4,'nivel superior');
 
 ----------------------
 
+INSERT INTO apoderados (id_persona, centro_trabajo, ocupacion, correo, id_ninstruccion)
+values (2,'textil del valle', 'supervisora','fio@gmail.com', 2);
+INSERT INTO apoderados (id_persona, centro_trabajo, ocupacion, correo, id_ninstruccion) 
+values (3,'agroindustria beta', 'jefe de logistica','dani@gmail.com', 3);
+select * from apoderados;
