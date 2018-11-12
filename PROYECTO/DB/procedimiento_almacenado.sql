@@ -329,3 +329,21 @@ $$
 							      
 							      
 /*FIN */
+
+/* PROCEDIMIENTO ALMACENADO PARA LISTAR LOS NIVELES DE INSTRUCCIONES*/
+
+use mydb;
+
+delimiter $$
+create procedure up_listar_Nivel_Instruccion
+(
+  IN _id_ninstruccion int(11)
+    
+)
+begin
+
+  SELECT * FROM niveles_instrucciones where id_ninstruccion = _id_ninstruccion;
+    
+END
+
+$$
