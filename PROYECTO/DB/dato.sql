@@ -55,11 +55,16 @@ INSERT INTO niveles_instrucciones (id_ninstruccion,nivel_instruccion) values (1,
 CALL up_registrar_nivel_instruccion(2,'nivel secundaria');
 CALL up_registrar_nivel_instruccion(3,'nivel tecnico');
 CALL up_registrar_nivel_instruccion(4,'nivel superior');
+/*fin*/
 
-----------------------
-
+--Tabla Apoderados
 INSERT INTO apoderados (id_persona, centro_trabajo, ocupacion, correo, id_ninstruccion)
-values (2,'textil del valle', 'supervisora','fio@gmail.com', 2);
-INSERT INTO apoderados (id_persona, centro_trabajo, ocupacion, correo, id_ninstruccion) 
-values (3,'agroindustria beta', 'jefe de logistica','dani@gmail.com', 3);
+values (1,'textil del valle', 'supervisor','luismartin@gmail.com', 3);
+INSERT INTO apoderados (id_persona, centro_trabajo, ocupacion, correo, id_ninstruccion)
+values (2,'agroindustria beta', 'jefa de logistica','rosaloza@gmail.com', 4);
 select * from apoderados;
+/*fin*/
+-- buscar apoderado
+call up_buscar_apoderados('1234567');
+--------------------------------------------
+call up_buscar_apoderados('649372');
