@@ -390,3 +390,15 @@ INSERT INTO cursos_competencias(id_curso, id_competencia) VALUES (_id_curso,_id_
 END
 $$
 /*Fin */
+							      
+/* Procedimiento Almacenado para Listar curso competencia */
+
+DELIMITER $$ 
+CREATE PROCEDURE up_listar_curso_competencias(
+IN _id_ccompetencia INT(11)
+) 
+BEGIN 
+
+SELECT * FROM cursos_competencias where id_ccompetencia=_idcompetencia; 
+END
+$$					
