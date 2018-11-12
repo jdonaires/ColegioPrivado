@@ -394,11 +394,11 @@ $$
 /* Procedimiento Almacenado para Listar curso competencia */
 
 DELIMITER $$ 
-CREATE PROCEDURE up_listar_curso_competencias(
+CREATE PROCEDURE up_listar_curso_competencia(
 IN _id_ccompetencia INT(11)
 ) 
 BEGIN 
 
-SELECT * FROM cursos_competencias where id_ccompetencia=_idcompetencia; 
+SELECT * FROM cursos_competencias where id_ccompetencia=_id_ccompetencia; 
 END
 $$					
