@@ -22,4 +22,12 @@ $curso_competenciaDAO = new Curso_CompetenciaDAO();
 //Objeto de tipo array
 $resultado_curso_competencia = array();
 
+//Obtenemos e ingresamos cada uno de los valores a los campos del formulario
+if(isset($_POST['guardar']))
+{
+	$curso_competencias->__GET('id_competencia')->__SET('id_competencia', 				$_POST['competencia']);
+	$curso_competencias->__GET('id_curso')->__SET('id_curso', 							$_POST['curso']);
+	$curso_competenciasDAO->Registrar($curso_competencias);
+	header('Location: frmRegistroCursosCompetencia.php');
+}
 ?>
