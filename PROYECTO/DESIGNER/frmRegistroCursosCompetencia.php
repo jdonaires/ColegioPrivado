@@ -31,3 +31,17 @@ if(isset($_POST['guardar']))
 	header('Location: frmRegistroCursosCompetencia.php');
 }
 ?>
+
+<!--Se inicia con la estructura del formulario-->
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Proceso de Registro Competencia</title>
+				<!--Plantilla de google para dar stilos-->
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+	</head>
+    <body style="padding:15px;">
+
+        
+    </body>
+</html>
