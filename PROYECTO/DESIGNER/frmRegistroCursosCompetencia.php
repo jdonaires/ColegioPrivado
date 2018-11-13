@@ -41,7 +41,34 @@ if(isset($_POST['guardar']))
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 	</head>
     <body style="padding:15px;">
+        <div class="pure-g">
+            <div class="pure-u-1-12">
 
-        
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="pure-form pure-form-stacked" style="margin-bottom:30px;">
+
+                    <table style="width:500px;" border="0">
+
+                        <tr>
+                            <th style="text-align:left;">Curso</th>
+                            <td>
+																<!--Se realiza la programación del procedimiento listar-->
+                                <?php
+                            		$curso->__SET('id_curso','');
+																	$resultado_curso = $cursoDAO->Listar($curso);
+                            	 	?>
+                            	 <select name="curso">
+                            	 	<?php foreach($resultado_curso as $per):?>
+                            	 		<option><?php echo $per->__GET('id_curso')." - ".$per->__GET('curso'); ?></option>
+                            	 	<?php endforeach;?>
+                            	 </select>
+														</td>
+                        </tr>
+                        
+			    
+			    
+                    </table>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
