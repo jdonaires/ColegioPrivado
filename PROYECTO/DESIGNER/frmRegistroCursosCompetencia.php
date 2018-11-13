@@ -63,6 +63,21 @@ if(isset($_POST['guardar']))
                             	 </select>
 														</td>
                         </tr>
+                        <tr>
+                            <th style="text-align:left;">Competencia</th>
+                            <td>
+															<!--Se realiza la programación del procedimiento listar-->
+                                 <?php
+                            			$competencia->__SET('id_competencia','');
+																	$resultado_competencia = $competenciaDAO->Listar($competencia);
+                            	 	?>
+                            	 <select name="curso">
+                            	 	<?php foreach($resultado_competencia as $per):?>
+                            	 		<option><?php echo $per->__GET('id_competencia')." - ".$per->__GET('competencia')." - Numero de competencia: ".$per->__GET('numero_co'); ?></option>
+                            	 	<?php endforeach;?>
+                            	 </select>
+							</td>
+                        </tr>
                         
 			    
 			    
