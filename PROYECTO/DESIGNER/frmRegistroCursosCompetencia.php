@@ -89,5 +89,32 @@ if(isset($_POST['guardar']))
                 </form>
             </div>
         </div>
+	    
+	<!--ESTA CONDICION SIRVE PARA REALIZAR BUSQUEDA POR DNI-->
+				<?php
+				if(isset($_POST['buscar']))
+				{
+
+					$curso_competencia->__SET('id_ccompetencia',$_POST['id_ccompetencia']);//ESTABLECEMOS EL VALOR DEL DNI
+					$resultado_curso_competencia = $curso_competenciaDAO->Listar($curso_competencia); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
+					if(!empty($resultado_curso_competencia)) //PREGUNTAMOS SI NO ESTA VACIO EL ARRAY
+					{
+						?>
+						<table class="pure-table pure-table-horizontal">
+								<thead>
+										<tr>
+												<th style="text-align:left;">ID</th>
+												<th style="text-align:left;">ID Curso</th>
+												<th style="text-align:left;">ID Competencia</th>
+
+										</tr>
+								</thead>
+						<?php foreach($resultado_curso_competencia as $r): //RECORREMOS EL ARRAY RESULTADO A TRAVES DE SUS CAMPOS
+						?>
+								<tr>
+										<td><?php echo $r->__GET('id_ccompetencia'); ?></td>
+							<td>
+
+                                
     </body>
 </html>
