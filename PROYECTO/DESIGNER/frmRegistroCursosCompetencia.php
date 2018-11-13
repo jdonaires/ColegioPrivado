@@ -115,6 +115,38 @@ if(isset($_POST['guardar']))
 										<td><?php echo $r->__GET('id_ccompetencia'); ?></td>
 							<td>
 
-                                
+                                 <?php
+                            		$competencia->__SET('id_competencia',$r->__GET('id_competencia')->__GET('id_competencia'));
+									$resultado_competencia = $competenciaDAO->Listar($competencia);
+                            	 ?>
+
+                            	 	<?php foreach($resultado_competencia as $per):?>
+                            	 		<?php echo $per->__GET('id_competencia')." - ".$per->__GET('competencia')." - Numero de competencia: ".$per->__GET('numero_co'); ?>
+                            	 	<?php endforeach;?>
+
+							</td>
+							<td>
+
+								<?php
+                            		$curso->__SET('id_curso',$r->__GET('id_curso')->__GET('id_curso'));
+									$resultado_curso = $cursoDAO->Listar($curso);
+                            	 ?>
+                                     <?php foreach($resultado_curso as $per):?>
+                            	 		<?php echo $per->__GET('id_curso')." - ".$per->__GET('curso'); ?>
+                            	     <?php endforeach;?>
+
+							</td>
+								</tr>
+						<?php endforeach;
+					}
+					else
+					{
+						echo 'no se encuentra en la base de datos!';
+					}
+					?>
+					</table>
+					<?php
+				}
+				?>
     </body>
 </html>
