@@ -36,53 +36,49 @@ if(isset($_POST['guardar']))
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<title>Proceso de Registro Competencia</title>
-				<!--Plantilla de google para dar stilos-->
+	<title>Proceso de Registro Competencia</title>
+	<!--Plantilla de google para dar stilos-->
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 	</head>
     <body style="padding:15px;">
         <div class="pure-g">
             <div class="pure-u-1-12">
-
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="pure-form pure-form-stacked" style="margin-bottom:30px;">
-
                     <table style="width:500px;" border="0">
-
                         <tr>
                             <th style="text-align:left;">Curso</th>
-                            <td>
-																<!--Se realiza la programación del procedimiento listar-->
+                            <td>																<!--Se realiza la programación del procedimiento listar-->
                                 <?php
                             		$curso->__SET('id_curso','');
-																	$resultado_curso = $cursoDAO->Listar($curso);
-                            	 	?>
+					$resultado_curso = $cursoDAO->Listar($curso);
+                            	 ?>
                             	 <select name="curso">
                             	 	<?php foreach($resultado_curso as $per):?>
                             	 		<option><?php echo $per->__GET('id_curso')." - ".$per->__GET('curso'); ?></option>
                             	 	<?php endforeach;?>
                             	 </select>
-														</td>
+			     </td>
                         </tr>
                         <tr>
                             <th style="text-align:left;">Competencia</th>
                             <td>
-															<!--Se realiza la programación del procedimiento listar-->
+				 <!--Se realiza la programación del procedimiento listar-->
                                  <?php
-                            			$competencia->__SET('id_competencia','');
-																	$resultado_competencia = $competenciaDAO->Listar($competencia);
-                            	 	?>
+                            		$competencia->__SET('id_competencia','');
+					$resultado_competencia = $competenciaDAO->Listar($competencia);
+                            	 ?>
                             	 <select name="curso">
                             	 	<?php foreach($resultado_competencia as $per):?>
                             	 		<option><?php echo $per->__GET('id_competencia')." - ".$per->__GET('competencia')." - Numero de competencia: ".$per->__GET('numero_co'); ?></option>
                             	 	<?php endforeach;?>
                             	 </select>
-							</td>
+			    </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-								<!--<input type="submit" value="GUARDAR" name="guardar"class="pure-button pure-button-primary">-->
-								<input type="submit" value="BUSCAR" name="buscar"class="pure-button pure-button-primary">
-								<input type="hidden" id="id_competencia" name="id_ccompetencia" value="">
+				<!--<input type="submit" value="GUARDAR" name="guardar"class="pure-button pure-button-primary">-->
+				<input type="submit" value="BUSCAR" name="buscar"class="pure-button pure-button-primary">
+				<input type="hidden" id="id_competencia" name="id_ccompetencia" value="">
                             </td>
                         </tr>    
                     </table>
@@ -94,7 +90,6 @@ if(isset($_POST['guardar']))
 				<?php
 				if(isset($_POST['buscar']))
 				{
-
 					$curso_competencia->__SET('id_ccompetencia',$_POST['id_ccompetencia']);//ESTABLECEMOS EL VALOR DEL DNI
 					$resultado_curso_competencia = $curso_competenciaDAO->Listar($curso_competencia); //CARGAMOS LOS REGISTRO EN EL ARRAY RESULTADO
 					if(!empty($resultado_curso_competencia)) //PREGUNTAMOS SI NO ESTA VACIO EL ARRAY
@@ -111,33 +106,31 @@ if(isset($_POST['guardar']))
 								</thead>
 						<?php foreach($resultado_curso_competencia as $r): //RECORREMOS EL ARRAY RESULTADO A TRAVES DE SUS CAMPOS
 						?>
-								<tr>
-										<td><?php echo $r->__GET('id_ccompetencia'); ?></td>
-							<td>
+						<tr>
+							<td><?php echo $r->__GET('id_ccompetencia'); ?></td>
+						        <td>
 
                                  <?php
                             		$competencia->__SET('id_competencia',$r->__GET('id_competencia')->__GET('id_competencia'));
-									$resultado_competencia = $competenciaDAO->Listar($competencia);
+						$resultado_competencia = $competenciaDAO->Listar($competencia);
                             	 ?>
 
                             	 	<?php foreach($resultado_competencia as $per):?>
-                            	 		<?php echo $per->__GET('id_competencia')." - ".$per->__GET('competencia')." - Numero de competencia: ".$per->__GET('numero_co'); ?>
+                            	 	<?php echo $per->__GET('id_competencia')." - ".$per->__GET('competencia')." - Numero de competencia: ".$per->__GET('numero_co'); ?>
                             	 	<?php endforeach;?>
-
 							</td>
 							<td>
 
-								<?php
-                            		$curso->__SET('id_curso',$r->__GET('id_curso')->__GET('id_curso'));
-									$resultado_curso = $cursoDAO->Listar($curso);
-                            	 ?>
+					<?php
+                            		     $curso->__SET('id_curso',$r->__GET('id_curso')->__GET('id_curso'));
+					     $resultado_curso = $cursoDAO->Listar($curso);
+                            	        ?>
                                      <?php foreach($resultado_curso as $per):?>
-                            	 		<?php echo $per->__GET('id_curso')." - ".$per->__GET('curso'); ?>
+                            	     <?php echo $per->__GET('id_curso')." - ".$per->__GET('curso'); ?>
                             	     <?php endforeach;?>
-
-							</td>
-								</tr>
-						<?php endforeach;
+						</td>
+							</tr>
+				     <?php endforeach;
 					}
 					else
 					{
