@@ -78,9 +78,13 @@ if(isset($_POST['guardar']))
                             	 </select>
 							</td>
                         </tr>
-                        
-			    
-			    
+                        <tr>
+                            <td colspan="2">
+								<!--<input type="submit" value="GUARDAR" name="guardar"class="pure-button pure-button-primary">-->
+								<input type="submit" value="BUSCAR" name="buscar"class="pure-button pure-button-primary">
+								<input type="hidden" id="id_competencia" name="id_ccompetencia" value="">
+                            </td>
+                        </tr>    
                     </table>
                 </form>
             </div>
