@@ -17,8 +17,8 @@ class Curso_competenciaDAO
 		try
 		{
 			$statement = $this->pdo->prepare("CALL up_registrar_curso_competencia(?,?)");
-	    $statement->bindParam(1, $curso_competencia->__GET('id_curso'));
-			$statement->bindParam(2, $curso_competencia->__GET('id_competencia'));
+	    $statement->bindParam(1, $curso_competencia->__GET('id_curso')->__GET('id_curso'));
+			$statement->bindParam(2, $curso_competencia->__GET('id_competencia')->__GET('id_competencia'));
 	    $statement -> execute();
 		} catch (Exception $e)
 		{
@@ -39,8 +39,8 @@ class Curso_competenciaDAO
 			{
 				$curso_competencia = new Curso_competencia();
 				$curso_competencia->__SET('id_ccompetencia', $r->id_ccompetencia);
-				$curso_competencia->__SET('id_competencia', $r->id_competencia;
-				$curso_competencia->__SET('id_curso', $r->id_curso);
+				$curso_competencia->__GET('id_competencia')->__SET('id_competencia', $r->id_competencia);
+				$curso_competencia->__GET('id_curso')->__SET('id_curso', $r->id_curso);
 
 				$result[] = $curso_competencia;
 			}
