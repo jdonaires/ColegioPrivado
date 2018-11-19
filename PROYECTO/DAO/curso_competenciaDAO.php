@@ -32,7 +32,7 @@ class Curso_competenciaDAO
 		{
 			$result = array();
 			$statement = $this->pdo->prepare("CALL up_listar_curso_competencia(?)");
-			$statement->bindParam(1, $curso_competencia->__GET('id_curso'));
+			$statement->bindParam(1, $curso_competencia->__GET('id_ccompetencia'));
 			$statement->execute();
 
 			foreach($statement->fetchAll(PDO::FETCH_OBJ) as $r)
